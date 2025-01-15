@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PyScript Example</title>
+  <!-- Include PyScript library -->
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+  <h1>Simple PyScript Example</h1>
+  
+  <!-- Input fields for numbers -->
+  <label for="num1">Enter first number:</label>
+  <input id="num1" type="number" placeholder="First number">
+  <br><br>
+  <label for="num2">Enter second number:</label>
+  <input id="num2" type="number" placeholder="Second number">
+  <br><br>
+  
+  <!-- Button to trigger the Python script -->
+  <button id="add-button">Add Numbers</button>
+  
+  <!-- Output section -->
+  <p>Result: <span id="result"></span></p>
+  
+  <!-- PyScript: Python code -->
+  <py-script>
+from pyscript import Element
+
+def add_numbers(event):
+    # Get input values from the HTML page
+    num1 = int(Element("num1").element.value)
+    num2 = int(Element("num2").element.value)
+    
+    # Perform addition
+    result = num1 + num2
+    
+    # Display result in the web page
+    Element("result").element.innerText = str(result)
+
+# Attach the add_numbers function to the button
+Element("add-button").element.onclick = add_numbers
+  </py-script>
+</body>
+</html>
